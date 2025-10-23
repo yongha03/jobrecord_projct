@@ -1,25 +1,21 @@
 package com.jobproj.api.dto;
 
+import com.jobproj.api.domain.Role;
+import lombok.Getter;
+
+@Getter
 public class LoginResponse {
-  private Long userId;
-  private String name;
-  private String role;
 
-  public LoginResponse(Long id, String n, String r) {
-    this.userId = id;
-    this.name = n;
-    this.role = r;
-  }
+  private final String accessToken; // JWT 토큰
+  private final Long userId;
+  private final String name;
+  private final Role role; // String이 아닌 Role Enum 타입
 
-  public Long getUserId() {
-    return userId;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getRole() {
-    return role;
+  // 생성자
+  public LoginResponse(String accessToken, Long userId, String name, Role role) {
+    this.accessToken = accessToken;
+    this.userId = userId;
+    this.name = name;
+    this.role = role;
   }
 }

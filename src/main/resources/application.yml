@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/jobproj_db?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=utf8
-    username: ${DB_USERNAME:db_user}
-    password: ${DB_PASSWORD:db_password}
+    url: jdbc:mysql://127.0.0.1:3307/jobproj_db?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    username: db_user
+    password: db_password
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       connectionInitSql: "SET NAMES utf8mb4"
@@ -22,3 +22,11 @@ management:
   health:
     db:
       enabled: false
+
+# JWT (JSON Web Token) 설정
+jwt:
+  #임의의 문자열을 base64로 인코딩한 값
+  secret-key: "Sm9iUmVjb3JkX1Byb2plY3RfU2VjcmV0X0tleV9FbmNvZGVfUGxlYXNl"
+
+  # 토큰 만료 시간 (밀리초 단위) 1시간
+  expiration-ms: 3600000

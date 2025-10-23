@@ -3,7 +3,9 @@
     image: mysql:8.4
     container_name: mysql8
     ports:
-      - "3306:3306"
+      - "3307:3306"
+
+
     environment:
       MYSQL_DATABASE: jobproj_db
       MYSQL_USER: db_user
@@ -13,18 +15,6 @@
     volumes:
       - ./db/init:/docker-entrypoint-initdb.d
       - mysql-data:/var/lib/mysql
-
-# 필요 시 백엔드 컨테이너도 추가 가능 (나중에 Dockerfile 준비되면 주석 해제)
-#  backend:
-#    build:
-#      context: ./backend
-#    container_name: backend
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      SPRING_PROFILES_ACTIVE: local
-#    depends_on:
-#      - mysql8
 
 volumes:
   mysql-data:
